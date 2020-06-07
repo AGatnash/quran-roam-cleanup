@@ -1,6 +1,6 @@
 import shutil
  
-txt = 'quran-simple-clean.txt'
+txt = 'quran-simple-clean.txt' #File from http://tanzil.net/docs/download
 tmptxt = '1.txt.tmp'
  
 with open(tmptxt, 'w') as outfile:
@@ -10,12 +10,12 @@ with open(tmptxt, 'w') as outfile:
             if line.startswith('بسم الله الرحمن الرحيم') or line.startswith('براءة من الله ورسوله'):
                 sura += 1
                 aya = 1
-                outfile.write("[[Quran:" ,sura, "]]")
-                outfile.write(\t "[[",sura,":",aya,"]] " line)
+                outfile.write("[[Quran " ,sura, "]]")
+                outfile.write(\t "[[Quran ",sura,":",aya,"]] " line)
                 aya += 1
                 continue
             if not line.startswith('بسم الله الرحمن الرحيم'):
-                outfile.write(\t "[[" ,sura, ":" ,aya, "]] " line)
+                outfile.write(\t "[[Quran " ,sura, ":" ,aya, "]] " line)
                 aya += 1
                 continue
 shutil.move(tmptxt, txt)
