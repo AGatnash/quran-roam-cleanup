@@ -2,12 +2,13 @@ import shutil
  
 txt = 'quran-simple-clean.txt' #File from http://tanzil.net/docs/download
 tmptxt = '1.txt.tmp'
- 
+
+#Function to parse line-by-line adding denoting the start of each sura (chapter) and ayah ("verse") in Roam's bracketed notation:t 
 with open(tmptxt, 'w') as outfile:
     with open(txt, 'r') as infile:
         sura = 0
         for line in infile:
-            if line.startswith('بسم الله الرحمن الرحيم') or line.startswith('براءة من الله ورسوله'):
+            if line.startswith('بسم الله الرحمن الرحيم') or line.startswith('براءة من الله ورسوله'): #Second condition is because Chaper 9 starts differently.
                 sura += 1
                 aya = 1
                 outfile.write("[[Quran " ,sura, "]]")
